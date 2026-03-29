@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-heading);
+    --font-sans: var(--font-sans);
+    --font-script: var(--font-script);
+  }
+  /* Warm minimalist — cream, coral, cyan (Handwrytten-style) */
+  :root {
+    --background: #f9f8f4;
+    --foreground: #1a1a1a;
+    --card: #ffffff;
+    --card-foreground: #1a1a1a;
+    --popover: #ffffff;
+    --popover-foreground: #1a1a1a;
+    --primary: #ff5e3a;
+    --primary-foreground: #ffffff;
+    --secondary: #e9ece4;
+    --secondary-foreground: #1a1a1a;
+    --muted: #f0ede6;
+    --muted-foreground: #5c5c5c;
+    --accent: #5ac8d8;
+    --accent-foreground: #0d3d45;
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: rgba(26, 26, 26, 0.12);
+    --input: rgba(26, 26, 26, 0.14);
+    --ring: #ff5e3a;
+    --radius: 0.25rem;
+    --sidebar: #f9f8f4;
+    --sidebar-foreground: #1a1a1a;
+    --sidebar-primary: #ff5e3a;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #e9ece4;
+    --sidebar-accent-foreground: #1a1a1a;
+    --sidebar-border: rgba(26, 26, 26, 0.1);
+    --sidebar-ring: #ff5e3a;
+  }
+  * {
+    @apply border-border;
+  }
+
+  *:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--ring) 55%, transparent);
+    outline-offset: 2px;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  html {
+    @apply font-sans;
+  }
+}

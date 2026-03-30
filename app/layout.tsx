@@ -29,9 +29,10 @@ export const metadata: Metadata = {
   description:
     "Done-for-you cold email and direct mail outreach for B2B. We fill your pipeline; you close the deals.",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    apple: "/icon.png",
-    shortcut: "/icon.png",
+    /** Query string busts browser/CDN favicon cache when the asset changes */
+    icon: [{ url: "/icon.png?v=2", type: "image/png" }],
+    apple: "/icon.png?v=2",
+    shortcut: "/icon.png?v=2",
   },
 };
 

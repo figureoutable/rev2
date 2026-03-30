@@ -3,22 +3,18 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-import HeroDecorPaths from "@/components/HeroDecorPaths";
 import { MotionPrimaryLink } from "@/components/MotionPrimaryLink";
 import RetroComputerInbox from "@/components/RetroComputerInbox";
 import { cn } from "@/lib/utils";
 
 const trust = [
-  "Rolling monthly terms",
-  "Weekly performance readouts",
-  "You own the relationships",
+  "Pay for performance",
+  "Not set up or onboarding fees",
 ] as const;
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-cream pb-24 pt-10 sm:pb-32 sm:pt-14">
-      <HeroDecorPaths />
-
+    <section className="relative overflow-hidden bg-cream pb-12 pt-5 sm:pb-16 sm:pt-7">
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-4 sm:gap-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <div>
           <motion.h1
@@ -45,13 +41,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
           >
-            <strong className="font-semibold text-ink">Done-for-you</strong> cold email
-            and direct mail for B2B teams. Lists, messaging, deliverability, and
-            reporting—handled end to end.
+            RevSquared is a B2B lead generation and email marketing agency that
+            drives business growth through targeted outbound.
           </motion.p>
 
           <motion.div
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
@@ -79,7 +74,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.ul
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-2"
+            className="mt-5 flex flex-col gap-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.45, delay: 0.25 }}

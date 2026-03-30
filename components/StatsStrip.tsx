@@ -1,104 +1,40 @@
 "use client";
 
-import { animate, useInView } from "framer-motion";
-import { Activity, Database, TrendingUp } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-type StatConfig = {
-  id: string;
-  value: number;
-  decimals?: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-};
-
-const STATS: StatConfig[] = [
+const SCREENSHOTS = [
   {
-    id: "open-rate",
-    value: 62,
-    suffix: "%",
-    label: "Open rate · last campaign",
+    src: "/images/results/campaign-1.png",
+    alt: "Campaign analytics: sent, opened, replied, and positive reply rates",
   },
   {
-    id: "meetings",
-    value: 28,
-    label: "Meetings · 60 days",
+    src: "/images/results/campaign-2.png",
+    alt: "Campaign analytics: sent, opened, replied, and positive reply rates",
   },
   {
-    id: "reply-rate",
-    value: 4.1,
-    decimals: 1,
-    suffix: "%",
-    label: "Reply rate · vs 1.2% avg",
+    src: "/images/results/campaign-3.png",
+    alt: "Campaign analytics: sent, opened, replied, and positive reply rates",
   },
-];
-
-const numberStyle = "text-coral";
-
-const pipelineItems = [
-  { icon: Database, label: "ICP & list build" },
-  { icon: Activity, label: "Sequences & sends" },
-  { icon: TrendingUp, label: "Replies & meetings" },
+  {
+    src: "/images/results/campaign-4.png",
+    alt: "Campaign analytics: sent, opened, replied, and positive reply rates",
+  },
 ] as const;
 
-function AnimatedNumber({
-  className,
-  decimals = 0,
-  prefix = "",
-  suffix = "",
-  value,
-}: {
-  className?: string;
-  value: number;
-  decimals?: number;
-  prefix?: string;
-  suffix?: string;
-}) {
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-120px" });
-  const [text, setText] = useState(() =>
-    decimals > 0 ? (0).toFixed(decimals) : "0"
-  );
+/** Intrinsic size of campaign-*.png assets (all four match) */
+const SHOT_WIDTH = 1024;
+const SHOT_HEIGHT = 306;
 
-  useEffect(() => {
-    if (!isInView) return;
-
-    const controls = animate(0, value, {
-      duration: 1.65,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (latest) => {
-        setText(
-          decimals > 0 ? latest.toFixed(decimals) : String(Math.round(latest))
-        );
-      },
-    });
-
-    return () => controls.stop();
-  }, [decimals, isInView, value]);
-
-  return (
-    <span
-      ref={ref}
-      className={cn(
-        "inline-block font-heading font-semibold tabular-nums tracking-tight",
-        numberStyle,
-        className
-      )}
-    >
-      {prefix}
-      {text}
-      {suffix}
-    </span>
-  );
-}
+const cardClass =
+  "overflow-hidden rounded-lg border border-neutral-200/90 bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)] transition-[border-color,box-shadow] duration-300 hover:border-neutral-300 hover:shadow-[0_2px_12px_rgba(0,0,0,0.05)]";
 
 export default function StatsStrip() {
   return (
     <section
-      className="scroll-mt-24 border-t border-ink/10 bg-sage/35 py-24 sm:py-28"
+      className="scroll-mt-24 border-t border-neutral-200/90 bg-[#f4f4f2] py-12 sm:py-14"
       id="stats"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -109,90 +45,30 @@ export default function StatsStrip() {
           <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Numbers that match the work
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Representative client outcomes—your mileage depends on ICP and offer.
-          </p>
         </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-4 lg:grid-rows-2">
-          <div className="rounded-sm border-2 border-ink/12 bg-white p-8 shadow-[5px_5px_0_0_rgba(26,26,26,0.04)] lg:col-span-2">
-            <div className="text-5xl sm:text-6xl">
-              <AnimatedNumber suffix="%" value={STATS[0].value} />
-            </div>
-            <p className="mt-3 text-sm font-medium text-sea">{STATS[0].label}</p>
-          </div>
-
-          <div className="rounded-sm border-2 border-ink/12 bg-white p-8 shadow-[5px_5px_0_0_rgba(26,26,26,0.04)]">
-            <div className="text-4xl sm:text-5xl">
-              <AnimatedNumber value={STATS[1].value} />
-            </div>
-            <p className="mt-3 text-sm font-medium text-sea">{STATS[1].label}</p>
-          </div>
-
-          <div className="rounded-sm border-2 border-ink/12 bg-white p-8 shadow-[5px_5px_0_0_rgba(26,26,26,0.04)]">
-            <div className="text-4xl sm:text-5xl">
-              <AnimatedNumber
-                decimals={STATS[2].decimals}
-                suffix={STATS[2].suffix}
-                value={STATS[2].value}
-              />
-            </div>
-            <p className="mt-3 text-sm font-medium text-sea">{STATS[2].label}</p>
-          </div>
-
-          <div className="rounded-sm border-2 border-ink/12 bg-white lg:col-span-2">
-            <div className="border-b-2 border-ink/8 px-8 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-coral">
-              Pipeline
-            </div>
-            <ul className="divide-y-2 divide-ink/6">
-              {pipelineItems.map(({ icon: Icon, label }) => (
-                <li className="flex items-center gap-4 px-8 py-4" key={label}>
-                  <span className="flex h-10 w-10 items-center justify-center rounded-sm border-2 border-ink/10 bg-sage text-ink">
-                    <Icon className="h-4 w-4" strokeWidth={1.75} />
-                  </span>
-                  <span className="text-sm text-muted-foreground">{label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative overflow-hidden rounded-sm border-2 border-ink/12 bg-white p-8 shadow-[5px_5px_0_0_rgba(26,26,26,0.04)] lg:col-span-2">
-            <p className="text-sm font-semibold text-ink">Reply momentum</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Trailing window · illustrative
-            </p>
-            <div className="relative mt-8 h-28">
-              <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-20 rounded-t-sm bg-gradient-to-t from-sea/20 to-transparent"
-              />
-              <svg
-                className="relative h-full w-full"
-                preserveAspectRatio="none"
-                viewBox="0 0 400 100"
-              >
-                <defs>
-                  <linearGradient id="statLineWarm" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#5AC8D8" />
-                    <stop offset="100%" stopColor="#FF5E3A" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M0,85 C60,80 100,40 160,50 S280,15 400,25"
-                  fill="none"
-                  stroke="url(#statLineWarm)"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
+        <div className="mx-auto mt-10 grid w-full max-w-5xl grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:mt-14 lg:max-w-6xl lg:gap-6">
+          {SCREENSHOTS.map((shot, i) => (
+            <motion.figure
+              className={cn(cardClass, "min-w-0")}
+              initial={{ opacity: 0, y: 12 }}
+              key={shot.src}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              viewport={{ once: true, margin: "-40px" }}
+              whileInView={{ opacity: 1, y: 0 }}
+            >
+              <div className="bg-neutral-50/90 p-1.5 sm:p-2">
+                <Image
+                  alt={shot.alt}
+                  className="h-auto w-full"
+                  height={SHOT_HEIGHT}
+                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 560px"
+                  src={shot.src}
+                  width={SHOT_WIDTH}
                 />
-              </svg>
-              <div className="absolute right-6 top-2 flex flex-col items-end gap-1">
-                <span className="rounded-sm bg-coral px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
-                  +305
-                </span>
-                <span className="text-[10px] text-muted-foreground">replies</span>
               </div>
-            </div>
-          </div>
+            </motion.figure>
+          ))}
         </div>
       </div>
     </section>

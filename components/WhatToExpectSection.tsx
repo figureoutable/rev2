@@ -1,30 +1,20 @@
 "use client";
 
-import { animate } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-const CORAL = "#FF5C3E";
-const DOT_DASH = "2 16";
-
-/** Vertical S-curve beside the steps — email flows top → bottom */
-const STEP_FLIGHT_PATH =
-  "M 28 24 C 44 120 12 200 28 280 S 48 400 28 520";
-
-const STEP_FLIGHT_DURATION_SEC = 7 / 0.7;
-
 const STEP_IMAGES = [
-  "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+  "/images/what-to-expect/onboarding.png",
+  "/images/what-to-expect/setup.png",
+  "/images/what-to-expect/launch.png",
 ] as const;
 
 const STEP_IMAGE_ALTS = [
-  "Team collaborating on strategy in a bright office",
-  "Engineer working with technical equipment in a lab",
-  "Team celebrating together at a table",
+  "Professional on a call while working with a keyboard in a technical workspace",
+  "Engineer assembling robotics hardware at a well-lit workbench",
+  "Team of students celebrating around laptops and robotics projects",
 ] as const;
 
 const steps = [
@@ -45,106 +35,12 @@ const steps = [
   },
 ] as const;
 
-function poseMailAlongPath(path: SVGPathElement, group: SVGGElement, t: number) {
-  const len = path.getTotalLength();
-  if (len < 2) return;
-  const dist = t * len;
-  const p = path.getPointAtLength(dist);
-  const sampleDelta = Math.max(len * 0.004, 2);
-  const pAhead = path.getPointAtLength(Math.min(dist + sampleDelta, len));
-  const angleDeg =
-    (Math.atan2(pAhead.y - p.y, pAhead.x - p.x) * 180) / Math.PI;
-  group.setAttribute(
-    "transform",
-    `translate(${p.x},${p.y}) rotate(${angleDeg})`
-  );
-}
-
-function StepColumnFlight() {
-  const pathRef = useRef<SVGPathElement>(null);
-  const mailRef = useRef<SVGGElement>(null);
-
-  useLayoutEffect(() => {
-    const path = pathRef.current;
-    const mail = mailRef.current;
-    if (!path || !mail) return;
-    poseMailAlongPath(path, mail, 0);
-  }, []);
-
-  useEffect(() => {
-    const path = pathRef.current;
-    const mail = mailRef.current;
-    if (!path || !mail) return;
-    if (path.getTotalLength() < 2) return;
-
-    const controls = animate(0, 1, {
-      duration: STEP_FLIGHT_DURATION_SEC,
-      ease: "linear",
-      repeat: Infinity,
-      onUpdate: (progress) => poseMailAlongPath(path, mail, progress),
-    });
-
-    return () => controls.stop();
-  }, []);
-
-  return (
-    <div
-      aria-hidden
-      className="absolute bottom-0 left-0 top-0 w-14 shrink-0 sm:w-16"
-    >
-      <svg
-        className="h-full w-full"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 56 544"
-      >
-        <path
-          d={STEP_FLIGHT_PATH}
-          fill="none"
-          stroke={CORAL}
-          strokeDasharray={DOT_DASH}
-          strokeLinecap="round"
-          strokeWidth="2"
-          opacity={0.55}
-        />
-        <path
-          ref={pathRef}
-          d={STEP_FLIGHT_PATH}
-          fill="none"
-          stroke="transparent"
-          strokeWidth="8"
-        />
-        <g ref={mailRef}>
-          <g transform="translate(-14, -5)">
-            <rect
-              fill="#ffffff"
-              height="10"
-              rx="1"
-              stroke="#1a1a1a"
-              strokeWidth="1.2"
-              width="16"
-              x="0"
-              y="0"
-            />
-            <path
-              d="M 0 0 L 8 6.5 L 16 0"
-              fill="none"
-              stroke="#1a1a1a"
-              strokeLinejoin="round"
-              strokeWidth="1.2"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 export default function WhatToExpectSection() {
   const [active, setActive] = useState(0);
 
   return (
     <section
-      className="scroll-mt-24 border-t border-ink/10 bg-white py-20 sm:py-28"
+      className="scroll-mt-24 border-t border-ink/10 bg-white py-10 sm:py-14"
       id="how-it-works"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -153,23 +49,21 @@ export default function WhatToExpectSection() {
         </h2>
 
         <div className="mt-14 grid gap-12 lg:mt-16 lg:grid-cols-2 lg:items-start lg:gap-14">
-          <div className="w-full max-w-xl overflow-hidden rounded-2xl bg-neutral-100 lg:mx-0 lg:max-w-none">
+          <div className="order-1 w-full max-w-xl overflow-hidden rounded-2xl bg-neutral-100 lg:order-2 lg:mx-0 lg:max-w-none">
             <Image
               alt={STEP_IMAGE_ALTS[active]}
               className="h-auto w-full transition-opacity duration-500"
-              height={800}
+              height={682}
               key={active}
               priority={active === 0}
               sizes="(max-width: 1024px) 100vw, 50vw"
               src={STEP_IMAGES[active]}
-              width={1200}
+              width={1024}
             />
           </div>
 
-          <div className="relative min-h-[320px] pl-12 sm:pl-14 lg:min-h-[480px]">
-            <StepColumnFlight />
-
-            <div className="relative flex flex-col">
+          <div className="order-2 min-h-[320px] lg:order-1 lg:min-h-[480px]">
+            <div className="flex flex-col">
               {steps.map((step, i) => {
                 const isActive = active === i;
                 const num = String(i + 1).padStart(2, "0");
@@ -219,7 +113,7 @@ export default function WhatToExpectSection() {
                             className="absolute left-0 top-0 h-full w-[68%] max-w-md bg-coral"
                           />
                         </div>
-                        <p className="mt-5 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem]">
+                        <p className="my-5 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem]">
                           {step.description}
                         </p>
                       </div>

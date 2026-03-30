@@ -11,7 +11,7 @@ const CALENDLY_PLACEHOLDER = "https://calendly.com/your-org/revsquared-strategy"
 export default function CtaSection() {
   return (
     <section
-      className="relative scroll-mt-24 overflow-hidden border-t border-ink/10 bg-cream py-20 sm:py-24"
+      className="relative scroll-mt-24 overflow-hidden border-t border-ink/10 bg-cream py-10 sm:py-12"
       id="book-a-call"
     >
       <div

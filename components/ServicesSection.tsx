@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Mailbox } from "lucide-react";
+import { Check, Mail, Mailbox, Mails } from "lucide-react";
 
 import {
   Card,
@@ -17,11 +17,10 @@ const services = [
     subtitle: "Outbound sequences",
     icon: Mail,
     bullets: [
-      "Fully managed sends",
-      "Copy + sequence strategy",
-      "Deliverability & warming",
-      "A/B testing",
-      "Weekly reporting",
+      "End-to-end campaign management",
+      "Segmented sequence strategy",
+      "Multi-step sequence writing",
+      "Inbox placement & warming",
     ],
   },
   {
@@ -29,10 +28,21 @@ const services = [
     subtitle: "Physical touchpoints",
     icon: Mailbox,
     bullets: [
-      "Targeted decision-makers",
-      "Design & copy included",
-      "Postage & fulfilment",
-      "High-value accounts",
+      "Targeted proprietary lead lists",
+      "Full creative production",
+      "Managed print & dispatch",
+      "ROI tracking & reporting",
+    ],
+  },
+  {
+    title: "Email Marketing",
+    subtitle: "Done for you",
+    icon: Mails,
+    bullets: [
+      "Campaign strategy & calendar",
+      "Copywriting & design",
+      "A/B testing & optimisation",
+      "Deliverability management",
     ],
   },
 ];
@@ -40,31 +50,25 @@ const services = [
 export default function ServicesSection() {
   return (
     <section
-      className="border-t border-ink/10 bg-sage/40 py-24 sm:py-28"
+      className="border-t border-ink/10 bg-sage/40 py-12 sm:py-14"
       id="services"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
           initial={{ opacity: 0, y: 14 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true, margin: "-80px" }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
-              Services
-            </p>
-            <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              What we run
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm text-muted-foreground md:text-right">
-            Email and mail in one motion—or either channel alone.
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
+            Services
           </p>
+          <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            What we run
+          </h2>
         </motion.div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -101,9 +105,10 @@ export default function ServicesSection() {
                     <ul className="space-y-3 text-sm text-muted-foreground">
                       {s.bullets.map((b) => (
                         <li className="flex gap-3" key={b}>
-                          <span
+                          <Check
                             aria-hidden
-                            className="mt-2 h-px w-4 shrink-0 bg-sea/70"
+                            className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"
+                            strokeWidth={2.5}
                           />
                           {b}
                         </li>

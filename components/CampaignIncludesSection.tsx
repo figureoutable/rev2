@@ -58,7 +58,7 @@ const items: readonly { title: string; body: string; Icon: LucideIcon }[] = [
     Icon: RefreshCw,
   },
   {
-    title: "Monthly check-in calls",
+    title: "Regular check-in calls",
     body: "Regular strategy calls to refine and improve campaign performance.",
     Icon: Phone,
   },

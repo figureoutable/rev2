@@ -71,13 +71,13 @@ export default function WhatToExpectSection() {
                 return (
                   <div key={step.title}>
                     {i > 0 ? (
-                      <div className="mb-6 h-px w-full bg-neutral-200" />
+                      <div className="mb-3 h-px w-full bg-neutral-200" />
                     ) : null}
 
                     <button
                       aria-controls={`step-panel-${i}`}
                       aria-expanded={isActive}
-                      className="w-full text-left"
+                      className="w-full py-1 text-left"
                       onClick={() => setActive(i)}
                       type="button"
                     >

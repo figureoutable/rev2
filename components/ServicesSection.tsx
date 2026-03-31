@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check, Mail, Mailbox, Mails } from "lucide-react";
+import Link from "next/link";
 
 import {
   Card,
@@ -13,9 +14,10 @@ import { cn } from "@/lib/utils";
 
 const services = [
   {
-    title: "Cold Email",
+    title: "Lead Generation",
     subtitle: "Outbound sequences",
     icon: Mail,
+    href: "/services/cold-email",
     bullets: [
       "End-to-end campaign management",
       "Segmented sequence strategy",
@@ -27,6 +29,7 @@ const services = [
     title: "Direct Mail",
     subtitle: "Physical touchpoints",
     icon: Mailbox,
+    href: "/services/direct-mail",
     bullets: [
       "Targeted proprietary lead lists",
       "Full creative production",
@@ -38,6 +41,7 @@ const services = [
     title: "Email Marketing",
     subtitle: "Done for you",
     icon: Mails,
+    href: "/services/email-marketing",
     bullets: [
       "Campaign strategy & calendar",
       "Copywriting & design",
@@ -82,39 +86,47 @@ export default function ServicesSection() {
                 <Card
                   className={cn(
                     "rounded-sm border-2 border-ink/12 bg-white",
-                    "shadow-[6px_6px_0_0_rgba(26,26,26,0.05)] transition-shadow duration-300",
+                    "h-full shadow-[6px_6px_0_0_rgba(26,26,26,0.05)] transition-shadow duration-300",
                     "hover:shadow-[8px_8px_0_0_rgba(90,200,216,0.2)]"
                   )}
                 >
-                  <CardHeader className="border-b-2 border-ink/8 p-8 pb-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <CardTitle className="font-heading text-2xl font-semibold text-ink">
-                          {s.title}
-                        </CardTitle>
-                        <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                          {s.subtitle}
-                        </p>
+                  <Link
+                    className="block h-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2"
+                    href={s.href}
+                  >
+                    <CardHeader className="border-b-2 border-ink/8 p-8 pb-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <CardTitle className="font-heading text-2xl font-semibold text-ink">
+                            {s.title}
+                          </CardTitle>
+                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                            {s.subtitle}
+                          </p>
+                        </div>
+                        <div className="flex h-12 w-12 items-center justify-center rounded-sm border-2 border-ink/12 bg-coral/10 text-coral">
+                          <Icon className="h-5 w-5" strokeWidth={1.5} />
+                        </div>
                       </div>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-sm border-2 border-ink/12 bg-coral/10 text-coral">
-                        <Icon className="h-5 w-5" strokeWidth={1.5} />
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-8 pt-6">
-                    <ul className="space-y-3 text-sm text-muted-foreground">
-                      {s.bullets.map((b) => (
-                        <li className="flex gap-3" key={b}>
-                          <Check
-                            aria-hidden
-                            className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"
-                            strokeWidth={2.5}
-                          />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
+                    </CardHeader>
+                    <CardContent className="p-8 pt-6">
+                      <ul className="space-y-3 text-sm text-muted-foreground">
+                        {s.bullets.map((b) => (
+                          <li className="flex gap-3" key={b}>
+                            <Check
+                              aria-hidden
+                              className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"
+                              strokeWidth={2.5}
+                            />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-coral">
+                        View service details
+                      </p>
+                    </CardContent>
+                  </Link>
                 </Card>
               </motion.div>
             );

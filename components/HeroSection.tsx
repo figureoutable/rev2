@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-import { MotionPrimaryLink } from "@/components/MotionPrimaryLink";
 import RetroComputerInbox from "@/components/RetroComputerInbox";
 import { cn } from "@/lib/utils";
 
@@ -51,25 +50,15 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
           >
-            <MotionPrimaryLink
+            <a
               className={cn(
                 "inline-flex h-11 items-center justify-center rounded-sm bg-coral px-8",
-                "text-xs font-semibold uppercase tracking-[0.18em] text-white",
+                "text-xs font-semibold uppercase tracking-[0.14em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
               href="#book-a-call"
             >
-              Get started
-            </MotionPrimaryLink>
-            <a
-              className={cn(
-                "inline-flex h-11 items-center justify-center rounded-sm border-2 border-ink/90 px-8",
-                "text-xs font-semibold uppercase tracking-[0.14em] text-ink",
-                "transition-colors hover:bg-ink/[0.04]"
-              )}
-              href="#book-a-call"
-            >
-              Book a demo
+              Book a call
             </a>
           </motion.div>
 

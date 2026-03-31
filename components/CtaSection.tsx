@@ -54,16 +54,6 @@ export default function CtaSection() {
           >
             Book a call
           </MotionPrimaryLink>
-          <a
-            className={cn(
-              "inline-flex h-11 items-center justify-center rounded-sm border-2 border-ink/90 px-10",
-              "text-xs font-semibold uppercase tracking-[0.14em] text-ink",
-              "transition-colors hover:bg-ink/[0.04]"
-            )}
-            href="mailto:hello@revsquared.example"
-          >
-            Email us
-          </a>
         </div>
 
         <p className="mt-6 text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">

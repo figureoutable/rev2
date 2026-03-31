@@ -21,13 +21,13 @@ export default function Home() {
         <HeroSection />
       </AnimateIn>
       <AnimateIn delay={0.2} direction="right">
-        <WhyUsSection />
+        <ServicesSection />
       </AnimateIn>
       <AnimateIn delay={0.4} direction="left">
         <WhatToExpectSection />
       </AnimateIn>
       <AnimateIn delay={0.5} direction="up">
-        <ServicesSection />
+        <WhyUsSection />
       </AnimateIn>
       <AnimateIn delay={0.55} direction="up">
         <CampaignIncludesSection />

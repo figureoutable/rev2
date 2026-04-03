@@ -29,13 +29,13 @@ function siteUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (fromEnv) return fromEnv.replace(/\/$/, "");
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
+  return "http://localhost:3001";
 }
 
 // Favicon + Apple touch icon: `app/icon.png`, `app/apple-icon.png` (Next.js file convention).
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
-  title: "RevSquared — More pipeline. Less guesswork.",
+  title: "RevSquared — Pay for Performance · Lead Generation",
   description:
     "Done-for-you cold email and direct mail outreach for B2B. We fill your pipeline; you close the deals.",
 };

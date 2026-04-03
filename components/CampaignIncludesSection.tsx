@@ -93,7 +93,7 @@ function VerticalCategoryLabel({ label }: { label: string }) {
     <div className="flex w-8 shrink-0 items-center justify-center self-stretch sm:w-10">
       <span
         aria-hidden
-        className="inline-block origin-center rotate-90 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45 sm:text-[11px]"
+        className="inline-block origin-center -rotate-90 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45 sm:text-[11px]"
       >
         {label}
       </span>

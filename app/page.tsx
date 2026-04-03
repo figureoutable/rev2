@@ -1,5 +1,6 @@
 import AnimateIn from "@/components/AnimateIn";
 import CtaSection from "@/components/CtaSection";
+import FaqSection from "@/components/FaqSection";
 import FloatingChat from "@/components/FloatingChat";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -29,6 +30,9 @@ export default function Home() {
       </AnimateIn>
       <AnimateIn delay={0.7} direction="up">
         <StatsStrip />
+      </AnimateIn>
+      <AnimateIn delay={0.75} direction="up">
+        <FaqSection />
       </AnimateIn>
       <AnimateIn delay={0.8} direction="up">
         <CtaSection />

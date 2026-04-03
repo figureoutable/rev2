@@ -6,7 +6,7 @@ import { MotionPrimaryLink } from "@/components/MotionPrimaryLink";
 import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
-const links = [{ href: "/#stats", label: "Results" }] as const;
+const links = [{ href: "/#stats", label: "See Our Results" }] as const;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

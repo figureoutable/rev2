@@ -8,7 +8,7 @@ import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
 const trust = [
-  "Pay for performance",
+  "With a proven track record",
   "Not set up or onboarding fees",
 ] as const;
 
@@ -23,10 +23,10 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
           >
-            <span className="block">More pipeline.</span>
+            <span className="block">Pay for Performance</span>
             <span className="font-script mt-1 block text-[2.75rem] sm:text-[3.25rem] md:text-[3.5rem]">
               <span className="relative inline-block">
-                Less guesswork.
+                Lead Generation
                 <span
                   aria-hidden
                   className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-ink/80"
@@ -41,8 +41,8 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
           >
-            RevSquared is a B2B lead generation and email marketing agency that
-            drives business growth through targeted outbound.
+            RevSquared is a B2B lead generation agency that drives business growth
+            through targeted outbound.
           </motion.p>
 
           <motion.div
@@ -72,7 +72,7 @@ export default function HeroSection() {
             transition={{ duration: 0.45, delay: 0.25 }}
           >
             {trust.map((t) => (
-              <li className="flex items-center gap-2 text-sm text-muted-foreground" key={t}>
+              <li className="flex items-center gap-2 text-sm font-normal text-ink" key={t}>
                 <Check className="h-4 w-4 shrink-0 text-coral" strokeWidth={2.5} />
                 {t}
               </li>

@@ -71,8 +71,8 @@ export default function StatsStrip() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
-            Results
+          <p className="text-[11px] font-semibold tracking-[0.14em] text-coral">
+            See Our Results
           </p>
           <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Numbers that match the work

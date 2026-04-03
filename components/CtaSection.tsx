@@ -28,16 +28,9 @@ export default function CtaSection() {
         viewport={{ once: true, margin: "-100px" }}
         whileInView={{ opacity: 1, y: 0 }}
       >
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
-          Next step
-        </p>
-        <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           Ready when you are
         </h2>
-        <p className="mx-auto mt-5 max-w-md text-base leading-[1.75] text-muted-foreground">
-          No pricing theatre. One call to see if we&apos;re a fit for your
-          pipeline goals.
-        </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <MotionPrimaryLink

@@ -40,7 +40,7 @@ export default function WhatToExpectSection() {
 
   return (
     <section
-      className="scroll-mt-24 border-t border-ink/10 bg-white pb-8 pt-10 sm:pb-10 sm:pt-14"
+      className="scroll-mt-24 border-t border-ink/10 bg-white pb-8 pt-12 sm:pb-10 sm:pt-[4.2rem]"
       id="how-it-works"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -71,53 +71,60 @@ export default function WhatToExpectSection() {
                 return (
                   <div key={step.title}>
                     {i > 0 ? (
-                      <div className="mb-3 h-px w-full bg-neutral-200" />
+                      <div className="h-px w-full bg-neutral-200" />
                     ) : null}
 
-                    <button
-                      aria-controls={`step-panel-${i}`}
-                      aria-expanded={isActive}
-                      className="w-full py-1 text-left"
-                      onClick={() => setActive(i)}
-                      type="button"
+                    <div
+                      className={cn(
+                        i > 0 && "pt-3",
+                        i < steps.length - 1 && "pb-3"
+                      )}
                     >
-                      <span
-                        className={cn(
-                          "font-heading text-base sm:text-lg",
-                          isActive
-                            ? "font-semibold text-ink"
-                            : "font-normal text-ink/40"
-                        )}
+                      <button
+                        aria-controls={`step-panel-${i}`}
+                        aria-expanded={isActive}
+                        className="w-full py-1 text-left"
+                        onClick={() => setActive(i)}
+                        type="button"
                       >
                         <span
                           className={cn(
-                            "tabular-nums",
-                            isActive ? "text-muted-foreground" : "text-ink/35"
+                            "font-heading text-base sm:text-lg",
+                            isActive
+                              ? "font-semibold text-ink"
+                              : "font-normal text-ink/40"
                           )}
                         >
-                          {num}.
-                        </span>{" "}
-                        {step.title}
-                      </span>
-                    </button>
+                          <span
+                            className={cn(
+                              "tabular-nums",
+                              isActive ? "text-muted-foreground" : "text-ink/35"
+                            )}
+                          >
+                            {num}.
+                          </span>{" "}
+                          {step.title}
+                        </span>
+                      </button>
 
-                    {isActive ? (
-                      <div
-                        className="pt-4"
-                        id={`step-panel-${i}`}
-                        role="region"
-                      >
-                        <div className="relative h-px w-full bg-neutral-200">
-                          <div
-                            aria-hidden
-                            className="absolute left-0 top-0 h-full w-[68%] max-w-md bg-coral"
-                          />
+                      {isActive ? (
+                        <div
+                          className="pt-4"
+                          id={`step-panel-${i}`}
+                          role="region"
+                        >
+                          <div className="relative h-px w-full bg-neutral-200">
+                            <div
+                              aria-hidden
+                              className="absolute left-0 top-0 h-full w-[68%] max-w-md bg-coral"
+                            />
+                          </div>
+                          <p className="my-5 text-base leading-[1.75] text-muted-foreground sm:text-lg">
+                            {step.description}
+                          </p>
                         </div>
-                        <p className="my-5 text-base leading-[1.75] text-muted-foreground sm:text-lg">
-                          {step.description}
-                        </p>
-                      </div>
-                    ) : null}
+                      ) : null}
+                    </div>
                   </div>
                 );
               })}

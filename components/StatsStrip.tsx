@@ -66,7 +66,7 @@ const cardClass =
 export default function StatsStrip() {
   return (
     <section
-      className="scroll-mt-24 border-t border-neutral-200/90 bg-[#f4f4f2] py-12 sm:py-14"
+      className="scroll-mt-24 border-t border-neutral-200/90 bg-[#f4f4f2] pb-[3.9rem] pt-[1.625rem] sm:pb-[4.55rem] sm:pt-[1.95rem]"
       id="stats"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

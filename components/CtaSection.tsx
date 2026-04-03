@@ -3,10 +3,8 @@
 import { motion } from "framer-motion";
 
 import { MotionPrimaryLink } from "@/components/MotionPrimaryLink";
+import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
-
-/** TODO: replace with your live Calendly (or other scheduler) URL */
-const CALENDLY_PLACEHOLDER = "https://calendly.com/your-org/revsquared-strategy";
 
 export default function CtaSection() {
   return (
@@ -48,7 +46,7 @@ export default function CtaSection() {
               "text-xs font-semibold uppercase tracking-[0.18em] text-white",
               "transition-colors hover:bg-coral-hover"
             )}
-            href={CALENDLY_PLACEHOLDER}
+            href={BOOK_CALL_URL}
             rel="noopener noreferrer"
             target="_blank"
           >

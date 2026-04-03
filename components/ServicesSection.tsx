@@ -10,51 +10,34 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { whyUsCards } from "@/components/whyUsContent";
 import { cn } from "@/lib/utils";
 
 const services = [
   {
-    title: "Lead Generation",
-    subtitle: "Outbound sequences",
-    icon: Mail,
-    href: "/services/cold-email",
-    bullets: [
-      "End-to-end campaign management",
-      "Segmented sequence strategy",
-      "Multi-step sequence writing",
-      "Inbox placement & warming",
-    ],
-  },
-  {
-    title: "Direct Mail",
-    subtitle: "Physical touchpoints",
+    title: "Offer Creation Workshop",
+    subtitle: "Offer design",
     icon: Mailbox,
     href: "/services/direct-mail",
-    bullets: [
-      "Targeted proprietary lead lists",
-      "Full creative production",
-      "Managed print & dispatch",
-      "ROI tracking & reporting",
-    ],
   },
   {
-    title: "Email Marketing",
-    subtitle: "Done for you",
+    title: "Email Infrastructure",
+    subtitle: "Deliverability",
     icon: Mails,
     href: "/services/email-marketing",
-    bullets: [
-      "Campaign strategy & calendar",
-      "Copywriting & design",
-      "A/B testing & optimisation",
-      "Deliverability management",
-    ],
+  },
+  {
+    title: "Targeted Lead Lists",
+    subtitle: "List building",
+    icon: Mail,
+    href: "/services/cold-email",
   },
 ];
 
 export default function ServicesSection() {
   return (
     <section
-      className="border-t border-ink/10 bg-sage/40 py-12 sm:py-14"
+      className="border-t border-ink/10 bg-white py-12 sm:py-14"
       id="services"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -65,16 +48,18 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
-            Services
+            How we help
           </p>
           <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            What we run
+            Why RevSquared?
           </h2>
         </motion.div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = s.icon;
+            const why = whyUsCards[i];
+
             return (
               <motion.div
                 initial={{ opacity: 0, y: 18 }}
@@ -110,21 +95,18 @@ export default function ServicesSection() {
                       </div>
                     </CardHeader>
                     <CardContent className="p-8 pt-6">
-                      <ul className="space-y-3 text-sm text-muted-foreground">
-                        {s.bullets.map((b) => (
+                      <ul className="space-y-3 text-left text-sm leading-[1.65] text-muted-foreground">
+                        {why.bullets.map((b) => (
                           <li className="flex gap-3" key={b}>
                             <Check
                               aria-hidden
                               className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"
                               strokeWidth={2.5}
                             />
-                            {b}
+                            <span>{b}</span>
                           </li>
                         ))}
                       </ul>
-                      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-coral">
-                        View service details
-                      </p>
                     </CardContent>
                   </Link>
                 </Card>

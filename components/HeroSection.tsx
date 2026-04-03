@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 import RetroComputerInbox from "@/components/RetroComputerInbox";
+import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
 const trust = [
@@ -13,7 +14,7 @@ const trust = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-cream pb-12 pt-5 sm:pb-16 sm:pt-7">
+    <section className="relative overflow-hidden bg-cream pb-12 pt-6 sm:pb-16 sm:pt-9">
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-4 sm:gap-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <div>
           <motion.h1
@@ -56,7 +57,9 @@ export default function HeroSection() {
                 "text-xs font-semibold uppercase tracking-[0.14em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </a>

@@ -3,14 +3,10 @@
 import { useEffect, useState } from "react";
 
 import { MotionPrimaryLink } from "@/components/MotionPrimaryLink";
+import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
-const links = [
-  { href: "/#how-it-works", label: "Lead Generation" },
-  { href: "/#services", label: "Direct Mail" },
-  { href: "/#stats", label: "Email Marketing" },
-  { href: "/#stats", label: "Results" },
-] as const;
+const links = [{ href: "/#stats", label: "Results" }] as const;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,7 +52,9 @@ export default function Navbar() {
                 "text-[11px] font-semibold uppercase tracking-[0.2em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="/#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </MotionPrimaryLink>

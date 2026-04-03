@@ -40,11 +40,11 @@ export default function WhatToExpectSection() {
 
   return (
     <section
-      className="scroll-mt-24 border-t border-ink/10 bg-white py-10 sm:py-14"
+      className="scroll-mt-24 border-t border-ink/10 bg-white pb-8 pt-10 sm:pb-10 sm:pt-14"
       id="how-it-works"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+        <h2 className="mx-auto max-w-3xl text-balance text-center font-heading text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           What to expect when working with us
         </h2>
 
@@ -62,7 +62,7 @@ export default function WhatToExpectSection() {
             />
           </div>
 
-          <div className="order-2 min-h-[320px] lg:order-1 lg:min-h-[480px]">
+          <div className="order-2 min-h-[224px] lg:order-1 lg:min-h-[336px]">
             <div className="flex flex-col">
               {steps.map((step, i) => {
                 const isActive = active === i;
@@ -83,16 +83,16 @@ export default function WhatToExpectSection() {
                     >
                       <span
                         className={cn(
-                          "text-base sm:text-lg",
+                          "font-heading text-base sm:text-lg",
                           isActive
                             ? "font-semibold text-ink"
-                            : "font-normal text-neutral-400"
+                            : "font-normal text-ink/40"
                         )}
                       >
                         <span
                           className={cn(
                             "tabular-nums",
-                            isActive ? "text-neutral-500" : "text-neutral-400"
+                            isActive ? "text-muted-foreground" : "text-ink/35"
                           )}
                         >
                           {num}.
@@ -113,7 +113,7 @@ export default function WhatToExpectSection() {
                             className="absolute left-0 top-0 h-full w-[68%] max-w-md bg-coral"
                           />
                         </div>
-                        <p className="my-5 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem]">
+                        <p className="my-5 text-base leading-[1.75] text-muted-foreground sm:text-lg">
                           {step.description}
                         </p>
                       </div>

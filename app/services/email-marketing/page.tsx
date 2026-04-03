@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
 const included = [
@@ -69,11 +70,8 @@ export default function EmailMarketingPage() {
 
       <section className="border-b border-ink/10 bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-coral">
-            Done For You
-          </p>
-          <h1 className="font-heading mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-            Email Marketing
+          <h1 className="font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Done for you
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-[1.8] text-muted-foreground sm:text-lg">
             We run your email marketing end to end so your list drives steady
@@ -86,7 +84,9 @@ export default function EmailMarketingPage() {
                 "text-xs font-semibold uppercase tracking-[0.18em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="/#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </Link>
@@ -218,7 +218,9 @@ export default function EmailMarketingPage() {
                 "text-xs font-semibold uppercase tracking-[0.18em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="/#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </Link>

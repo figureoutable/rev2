@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { BOOK_CALL_URL } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
 const included = [
@@ -86,7 +87,9 @@ export default function ColdEmailPage() {
                 "text-xs font-semibold uppercase tracking-[0.18em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="/#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </Link>
@@ -218,7 +221,9 @@ export default function ColdEmailPage() {
                 "text-xs font-semibold uppercase tracking-[0.18em] text-white",
                 "transition-colors hover:bg-coral-hover"
               )}
-              href="/#book-a-call"
+              href={BOOK_CALL_URL}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Book a call
             </Link>

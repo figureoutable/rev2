@@ -8,8 +8,6 @@ import Navbar from "@/components/Navbar";
 import ServicesSection from "@/components/ServicesSection";
 import StatsStrip from "@/components/StatsStrip";
 import CampaignIncludesSection from "@/components/CampaignIncludesSection";
-import ValuePropositionSection from "@/components/ValuePropositionSection";
-import WhyUsSection from "@/components/WhyUsSection";
 
 export default function Home() {
   return (
@@ -23,17 +21,11 @@ export default function Home() {
       <AnimateIn delay={0.2} direction="right">
         <ServicesSection />
       </AnimateIn>
-      <AnimateIn delay={0.4} direction="left">
-        <WhatToExpectSection />
-      </AnimateIn>
-      <AnimateIn delay={0.5} direction="up">
-        <WhyUsSection />
-      </AnimateIn>
-      <AnimateIn delay={0.55} direction="up">
+      <AnimateIn delay={0.4} direction="up">
         <CampaignIncludesSection />
       </AnimateIn>
-      <AnimateIn delay={0.6} direction="left">
-        <ValuePropositionSection />
+      <AnimateIn delay={0.5} direction="left">
+        <WhatToExpectSection />
       </AnimateIn>
       <AnimateIn delay={0.7} direction="up">
         <StatsStrip />

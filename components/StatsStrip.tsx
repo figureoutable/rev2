@@ -54,6 +54,16 @@ const RESULTS_ITEMS = [
     description:
       "Commercial cleaning company servicing offices and industrial units. They show up on time, do the job properly, and keep spaces spotless so business owners can focus on running their business.",
   },
+  {
+    src: "/images/results/campaign-6.png",
+    alt: "Campaign analytics: sent, opened, replied, and positive reply rates",
+    company: "Grow Church Flow",
+    logoSrc: "/images/results/logos/grow-church-flow.png",
+    logoWidth: 676,
+    logoHeight: 450,
+    description:
+      "A done-for-you marketing agency for churches, helping them optimise their social media presence, website experience, and email flows to grow their congregation and retain first-time visitors.",
+  },
 ] as const;
 
 /** Intrinsic size of campaign-*.png assets (all four match) */
